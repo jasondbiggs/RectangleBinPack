@@ -1,5 +1,5 @@
 /** @file GuillotineBinPack.h
-	@author Jukka Jylänki
+	@author Jukka Jylï¿½nki
 
 	@brief Implements different bin packer algorithms that use the GUILLOTINE data structure.
 
@@ -87,6 +87,9 @@ public:
 	/// Performs a Rectangle Merge operation. This procedure looks for adjacent free rectangles and merges them if they
 	/// can be represented with a single rectangle. Takes up Theta(|freeRectangles|^2) time.
 	void MergeFreeList();
+
+	int getWidth() const { return binWidth; }
+	int getHeight() const { return binHeight; }
 
 private:
 	int binWidth;

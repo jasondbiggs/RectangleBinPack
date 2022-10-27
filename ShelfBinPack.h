@@ -1,5 +1,5 @@
 /** @file ShelfBinPack.h
-	@author Jukka Jylänki
+	@author Jukka Jylï¿½nki
 
 	@brief Implements different bin packer algorithms that use the SHELF data structure.
 
@@ -46,6 +46,9 @@ public:
 
 	/// Computes the ratio of used surface area to the total bin area.
 	float Occupancy() const;
+
+	int getWidth() const { return binWidth; }
+	int getHeight() const { return binHeight; }
 
 private:
 	int binWidth;

@@ -1,5 +1,5 @@
 /** @file MaxRectsBinPack.h
-	@author Jukka Jylänki
+	@author Jukka Jylï¿½nki
 
 	@brief Implements different bin packer algorithms that use the MAXRECTS data structure.
 
@@ -50,6 +50,18 @@ public:
 
 	/// Computes the ratio of used surface area to the total bin area.
 	double Occupancy() const;
+
+	int getWidth() const { return binWidth; }
+	int getHeight() const { return binHeight; }
+	bool getAllowFlip() const {return binAllowFlip; }
+
+	/// Returns the internal list of disjoint rectangles that track the free area of the bin. You may alter this vector
+	/// any way desired, as long as the end result still is a list of disjoint rectangles.
+	const std::vector<Rect> &GetFreeRectangles() { return freeRectangles; }
+
+	/// Returns the list of packed rectangles. You may alter this vector at will, for example, you can move a Rect from
+	/// this list to the Free Rectangles list to free up space on-the-fly, but notice that this causes fragmentation.
+	const std::vector<Rect> &GetUsedRectangles() { return usedRectangles; }
 
 private:
 	int binWidth;
