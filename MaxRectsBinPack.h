@@ -57,11 +57,14 @@ public:
 
 	/// Returns the internal list of disjoint rectangles that track the free area of the bin. You may alter this vector
 	/// any way desired, as long as the end result still is a list of disjoint rectangles.
-	const std::vector<Rect> &GetFreeRectangles() { return freeRectangles; }
+	std::vector<Rect> &GetFreeRectangles() { return freeRectangles; }
 
 	/// Returns the list of packed rectangles. You may alter this vector at will, for example, you can move a Rect from
 	/// this list to the Free Rectangles list to free up space on-the-fly, but notice that this causes fragmentation.
-	const std::vector<Rect> &GetUsedRectangles() { return usedRectangles; }
+	std::vector<Rect> &GetUsedRectangles() { return usedRectangles; }
+
+	/// Places the given rectangle into the bin.
+	void PlaceRect(const Rect &node);
 
 private:
 	int binWidth;
@@ -80,9 +83,6 @@ private:
 	/// @param score2 [out] The secondary placement score will be outputted here. This isu sed to break ties.
 	/// @return This struct identifies where the rectangle would be placed if it were placed.
 	Rect ScoreRect(int width, int height, FreeRectChoiceHeuristic method, int &score1, int &score2) const;
-
-	/// Places the given rectangle into the bin.
-	void PlaceRect(const Rect &node);
 
 	/// Computes the placement score for the -CP variant.
 	int ContactPointScoreNode(int x, int y, int width, int height) const;
